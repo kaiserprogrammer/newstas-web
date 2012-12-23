@@ -1,0 +1,26 @@
+<h1>(=*name*)</h1> Notifications
+
+<form method="post" id="add_site" action="/site">
+  <input type="textfield" name="url" value="http://" />
+  <input type="submit" name="new_site" value="Add Site" />
+</form>
+
+<table width="" cellspacing="" cellpadding="" border="">
+  <tr>
+    <td>Site</td>
+    <td>Changed</td>
+  </tr>
+((dolist (note *notes*)
+   (with-template
+  <tr>
+    <td>(=note)</td>
+    <td>
+      <form method="post" action="/user/clear">
+        <input type="hidden" name="url" value="(=note)" />
+        <input type="submit" name="clear" value="Clear" />
+      </form>
+    </td>
+  </tr>
+)))
+
+</table>
